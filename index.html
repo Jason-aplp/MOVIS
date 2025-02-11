@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Enhancing Multi-Object Novel View Synthesis for Indoor Scenes">
+  <meta name="keywords" content="MOVIS, multi-object, NVS, scene">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOVIS: Enhancing Multi-Object Novel View Synthesis for Indoor Scenes</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">MOVIS: Enhancing Multi-Object Novel View Synthesis for Indoor Scenes</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jason-aplp.github.io/Ruijie-Lu/">Ruijie Lu</a><sup>1,2*&dagger;</sup>,</span>
+            <span class="author-block">
+              <a href="https://yixchen.github.io/">Yixin Chen</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://dali-jack.github.io/Junfeng-Ni/">Junfeng Ni</a><sup>2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://buzz-beater.github.io/">Baoxiong Jia</a><sup>2</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://yuliu-ly.github.io/">Yu Liu</a><sup>2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/dnvtmf">Diwen Wan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cis.pku.edu.cn/info/1177/1378.htm">Gang Zeng</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://siyuanhuang.com/">Siyuan Huang</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block" style="color:#808080;font-weight:normal;">
+              <sup>*</sup> Indicates equal contribution  &nbsp&nbsp 
+              <sup>&dagger;</sup> Work done during an internship at BIGAI
+            </span>
+            <br>
+            <span class="author-block" style="color:#808080;font-weight:normal;">
+              <sup>1</sup>State Key Laboratory of General Artificial Intelligence, Peking University &nbsp &nbsp
+              <br>
+              <sup>2</sup>State Key Laboratory of General Artificial Intelligence, BIGAI  &nbsp&nbsp
+              <sup>3</sup>Tsinghua University
+            </span>
+            <br>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2412.11457"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png" alt="MOVIS Teaser" width="100%">
+      <h2 class="subtitle has-text-centered" style="font-family: 'Google Sans', sans-serif; line-height: 1.6; color: #4a4a4a; font-size: 1.25rem; margin: 1.5rem 0; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #363636;">MOVIS</strong> is able to synthesize novel views of indoor scenes with multiple objects. It can also match a significantly greater number of points, closely aligned with the ground truth.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0rem;">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          Repurposing pre-trained diffusion models has been proven to be effective for NVS. However, these methods are mostly limited to a single object; directly applying such methods to compositional multi-object scenarios yields inferior results, especially incorrect object placement and inconsistent shape and appearance under novel views. How to enhance and systematically evaluate the cross-view consistency of such models remains under-explored. 
+          To address this issue, we propose <strong>MOVIS</strong> to enhance the structural awareness of the view-conditioned diffusion model for multi-object NVS in terms of model inputs, auxiliary tasks, and training strategy. First, we inject structure-aware features, including depth and object mask, into the denoising U-Net to enhance the model's comprehension of object instances and their spatial relationships. Second, we introduce an auxiliary task requiring the model to simultaneously predict novel view object masks, further improving the model's capability in differentiating and placing objects. Finally, we conduct an in-depth analysis of the diffusion sampling process and carefully devise a structure-guided timestep sampling scheduler during training, which balances the learning of global object placement and fine-grained detail recovery. To systematically evaluate the plausibility of synthesized images, we propose to assess cross-view consistency and novel view object placement alongside existing image-level NVS metrics.
+          Extensive experiments on challenging synthetic and realistic datasets demonstrate that our method exhibits strong generalization capabilities and produces consistent novel view synthesis, highlighting its potential to guide future 3D-aware multi-object NVS tasks.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+<section class="section" style="padding-top: 0rem;">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          1) We inject structure-aware features, including depth and object mask, into the denoising U-Net to enhance the model's comprehension of object instances and their spatial relationships.
+          <br>
+          2) We introduce an auxiliary task requiring the model to simultaneously predict novel view object masks, further improving the model's capability in differentiating and placing objects.
+          <br>
+          3) We devise a structure-guided timestep sampling scheduler that initially emphasizes larger noise scales during training and progressively shifts towards finer noise levels, which balances the learning of global object placement and fine-grained detail recovery.
+          <br>
+          <img src="./static/images/method.png" alt="MOVIS Method" width="100%">
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+</section>
+
+<section class="section" style="padding-top: 0rem;">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+    <div class="column is-full-width">
+      <h2 class="title is-4">Comparisons</h2>
+      <img src="./static/images/nvs_comparison.png" alt="MOVIS Results" width="100%">
+      <p>
+        NVS results on C3DFS and Objaverse demonstrate our model generates more consistent and plausible novel views.
+      </p>
+    </div>
+    <div class="column is-full-width">
+      <h2 class="title is-4">NVS results on real-world scenes</h2>
+      <img src="./static/images/real_world.png" alt="MOVIS Results" width="100%">
+      <p>
+        Our method can generate plausible novel views using in-the-wild images from YouTube, RealEstate10K, and ScanNet++.
+      </p>
+    </div>
+    <div class="column is-full-width">
+      <h2 class="title is-4">Multi-view synthesis</h2>
+      <img src="./static/images/rotate.png" alt="MOVIS Results" width="100%">
+      <p>
+        Our method can synthesize plausible novel-view images across a wide range of camera pose variations.
+      </p>
+    </div>
+    <!--/ Results. -->
+</section>
+
+<section class="section" style="padding-top: 0rem;">
+  <div class="container is-max-desktop">
+    <!-- Related Works -->
+    <div class="column">
+      <h2 class="title is-3">Related Works</h2>
+      <div class="content">
+        <a href="https://zero123.cs.columbia.edu/">Zero-1-to-3: Zero-shot One Image to 3D Object</a>
+        <br>
+        <a href="https://kylesargent.github.io/zeronvs/">ZeroNVS: Zero-Shot 360-Degree View Synthesis from a Single Real Image</a>
+        <br>
+        <a href="https://chuanxiaz.com/free3d/">Free3D: Consistent Novel View Synthesis without 3D Representation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX", style="padding-top: 0rem;">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{lu2024movis,
+    title={MOVIS: Enhancing Multi-Object Novel View Synthesis for Indoor Scenes},
+    author={Lu, Ruijie and Chen, Yixin and Ni, Junfeng and Jia, Baoxiong and Liu, Yu and Wan, Diwen and Zeng, Gang and Huang, Siyuan},
+    journal={arXiv preprint arXiv:2412.11457},
+    year={2024}
+  }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website template is borrowed from the source code of <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
